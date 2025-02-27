@@ -3,21 +3,21 @@
 //task 1
 //explicitily asked to round it up a tad
 function add(x, y){
-    return Number((x + y).toFixed(2));
+    return (Number(x) + Number(y));
 }
 
 function subtract(x, y){
-    return Number((x - y).toFixed(2));
+    return (Number(x) - Number(y));
 }
 
 function multiply(x, y) {
-    return Number((x * y).toFixed(2));
+    return (Number(x) * Number(y));
 };
 
 function divide(x, y) {
     if (y == 0 && x == 0) {
         return "LMAO i caught that!you cheeky bugger!(pun intended i think)";
-    }   else {return Number((x / y).toFixed(2));} 
+    }   else {return (Number(x) * Number(y)).toFixed(2);} 
 };
 
 
@@ -25,8 +25,11 @@ function divide(x, y) {
 
 //task 2
 //idk if task two i mean to be a function with arguments of num1, num2 and operator but currently not? they are to update the display i guess so no? 
-let num1,num2;
-let operator;
+let num1='',num2='',temp = '';
+let currentdisplay = 'num1';
+let operator='';
+
+
 
 
 
@@ -44,5 +47,67 @@ function operate(num1, operator, num2){
     } else if (operator == '/') {
         return divide(num1, num2);
     }   
+    
 }
 
+//task4 is focused around html and CSS - complete
+
+
+//task 5 -Create the functions that populate the display when you click the digit buttons.
+//You should store the content of the display (the number) in a variable for use in the next step.
+
+let display = document.getElementById('display');
+
+const btns = document.querySelectorAll('button');
+
+btns.forEach(button => {button.addEventListener('click', ()=> ButtonClick(button.innerText))
+});
+
+function ButtonClick (value) {
+    
+    if (!isNaN(value) || value == '.'){
+        handleNum(value);
+    }
+
+    else if( value == '+' || value == '-' || value == '*' || value == '/') {
+        operator = value;
+        
+        display.innerText = operator;
+        handleOperator(value);
+    }
+    else if(value == '=') {
+        handleEqual();
+    }
+
+    // else if() {
+    //     handleOperator();
+    // }
+}
+
+function handleNum(value) {
+    temp += value
+    display.innerText = temp;
+    
+    return;
+}
+
+
+function handleOperator(value) {
+    currentdisplay = 'num2'
+    num1 = temp; 
+    temp = '';
+
+
+}
+
+function handleEqual() {
+    num2 = temp;
+    temp = '';
+    showcalculated(num1,operator,num2);
+
+}
+
+function showcalculated(num1,operator,num2) {
+    display.innerText = operate(num1,operator, num2);
+
+}
