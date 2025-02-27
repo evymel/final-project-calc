@@ -6,14 +6,52 @@
     <title>calculator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-
 </head>
 <body>
-    <div class="header"> <h1>calculator</h1></div>
-
-
+<div class="header"> <h1>calculator</h1></div>
+    <div id="container">
+        <!--display and buttoms are equal in rank, in a column-->
+        <div id="display">0</div>
+        <div id="allButtoms">
+            <!--top and numberPad are equal in rank, in a column-->
+            <div class = "leftBlock">
+                <div class="top">
+                    <!--doing that so i can easily manipulate the flex, could add more buttons to top-->
+                    <button class="button">AC</button>
+                </div>
+        
+                <div id ="numberPad" class = "numbers">
+                    <button class="button">1</button>
+                    <button class="button">2</button>
+                    <button class="button">3</button>
+        
+                    <button class="button">4</button>
+                    <button class="button">5</button>
+                    <button class="button">6</button>
+        
+                    <button class="button">7</button>
+                    <button class="button">8</button>
+                    <button class="button">9</button>
+        
     
-    
+                    <button class="button">0</button>
+                    <button class="button">.</button>
+        
+                </div>
+            </div>
+            
+            <div class="actions rightBlock">
+                <button class="button">+</button>
+                <button class="button">-</button>
+                <button class="button">*</button>
+                <button class="button">/</button>
+                <button class="button">=</button>
+
+            </div>
+        </div>
+        <!--here we got several options really, there gonna be a flux container that holds the buttoms, each line could be a flux line i would have five, or i could limit width
+        and have them warp which... idk each button should be height 100 width 80? included the padding and margin-->
+    </div>
 
     <script src="script.js"></script>
 </body>
