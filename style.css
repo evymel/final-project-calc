@@ -1,0 +1,83 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+#container {
+    background-color: black;
+    border: 10px solid rgba(47, 47, 47, 1);
+    border-radius: 4px;
+
+
+    gap: 2px;
+    max-width: 354px;
+
+}
+
+#display{
+    display: flex;
+    flex: 1;
+    font-size: 4em;
+    font-weight: 640;
+    color: black;
+    height: 72px;
+    align-items: center;
+    background-color: #b2b9b7;
+    padding: 4px;
+    margin: 4px;
+}
+
+#allBtns {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.leftBlock {
+    display: flex;
+    flex-wrap: wrap;
+
+    
+}
+
+.numBtn  {
+    width: 86px;
+    height: 72px;
+    border-radius: 4px;
+    background-color: #217C7E;
+    font-size: 2em;
+    font-weight: 640;
+}
+
+.topBtn{
+    width: 176px;
+    height: 72px;
+    border-radius: 4px;
+    background-color: dodgerblue;
+    font-size: 2em;
+    font-weight: 640;
+    margin-bottom: 4px;
+
+}
+
+
+
+.rightBlock{
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+
+.actBtn {
+
+    width: 86px;
+    height: 72px;
+    border-radius: 4px;
+    background-color: #ff7300;
+    font-size: 2em;
+    font-weight: 640;
+}
+
+
