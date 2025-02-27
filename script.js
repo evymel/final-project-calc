@@ -28,6 +28,7 @@ function divide(x, y) {
 let num1='',num2='',temp = '';
 let currentdisplay = 'num1';
 let operator='';
+let result = ''
 
 
 
@@ -70,20 +71,22 @@ function ButtonClick (value) {
     }
 
     else if( value == '+' || value == '-' || value == '*' || value == '/') {
-        operator = value;
-        
-        display.innerText = operator;
+
         handleOperator(value);
     }
     else if(value == '=') {
         handleEqual();
     }
 
-    // else if() {
-    //     handleOperator();
-    // }
+    else if(value == 'AC') {
+        handleAC();
+    }
 }
 
+
+
+//this is almost, almost complete, i still need to pass over the handles to fix the situation of 2+ 2 +2 + 2 + 2 essentially when the operator isn't already empty, handle it like
+//the Equal, also, not losing temp when we blank it after equal i think? because if we do 2+ 2 = we get 4, but if we do = again we lose it
 function handleNum(value) {
     temp += value
     display.innerText = temp;
@@ -93,9 +96,22 @@ function handleNum(value) {
 
 
 function handleOperator(value) {
+    //i've added that
+    // if (operator != '') {
+    //     operator = value;
+        
+    //     display.innerText = operator;
+
+        
+    // } 
+    operator = value;
+    
+    display.innerText = operator;
+
     currentdisplay = 'num2'
     num1 = temp; 
     temp = '';
+    
 
 
 }
@@ -103,11 +119,21 @@ function handleOperator(value) {
 function handleEqual() {
     num2 = temp;
     temp = '';
+
     showcalculated(num1,operator,num2);
+
+}
+
+function handleAC() {
+    num1 = 0;
+    num2 = 0;
+    operator = ''
+    display.innerText = 0;
 
 }
 
 function showcalculated(num1,operator,num2) {
     display.innerText = operate(num1,operator, num2);
-
+    result = operate(num1,operator, num2)
+    
 }
