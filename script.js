@@ -11,7 +11,7 @@ function subtract(x, y){
 }
 
 function multiply(x, y) {
-    return (Number(x) * Number(y));
+    return (Number(x) * Number(y)).toFixed(2);
 };
 
 function divide(x, y) {
@@ -84,8 +84,13 @@ function ButtonClick (value) {
 //this is almost, almost complete, i still need to pass over the handles to fix the situation of 2+ 2 +2 + 2 + 2 essentially when the operator isn't already empty, handle it like
 //the Equal, also, not losing temp when we blank it after equal i think? because if we do 2+ 2 = we get 4, but if we do = again we lose it
 function handleNum(value) {
-    temp += value
-    display.innerText = temp;
+    if (temp.includes('.') && value == '.') {
+        display.innerText = temp;
+    } else {
+        temp += value
+        display.innerText = temp;
+    }
+
 
     return;
 }
