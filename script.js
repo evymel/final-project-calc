@@ -15,8 +15,8 @@ function multiply(x, y) {
 };
 
 function divide(x, y) {
-    if (y == 0 && x == 0) {
-        return "LMAO i caught that!you cheeky bugger!(pun intended i think)";
+    if (y == 0) {
+        return "Nah m8";
     }   else {return (Number(x) / Number(y)).toFixed(2);} 
 };
 
@@ -59,6 +59,8 @@ const btns = document.querySelectorAll('button');
 btns.forEach(button => {button.addEventListener('click', ()=> ButtonClick(button.innerText))
 });
 
+
+
 function ButtonClick (value) {
     if (!isNaN(value) || value == '.'){
         handleNum(value);
@@ -91,38 +93,32 @@ function handleNum(value) {
     return;
 }
 
-
+//major change
 function handleOperator(value) {
-    //if below happens then we are at the second operator
-    // if (num1 == result) {
-    //     handleEqual()
-    //     operator = value;
-    //     display.innerText = operator;
-
-    // }
+    if (temp !== '') {
+        if (num1 !== '' && operator !== '') {
+            // Perform calculation immediately before setting new operator
+            showcalculated(num1, operator, temp);
+        } else {
+            num1 = temp; 
+        }
+    }
 
     operator = value;
-    display.innerText = operator;
-    currentdisplay = ''
-
-    if (result == '') {
-        num1 = temp; 
-    } else {
-        num1 = result;
-        num2 = temp
-    }
-    temp = '';
-
+    temp = '';  // Clear temp for next input
+    display.innerText = num1;  // Show the updated result immediately
 }
 
+//major change
 function handleEqual() {
-    num2 = temp;
-    //temp = '';
-
-    showcalculated(num1,operator,num2);
-    // here i do the trick????
-    //num1 = temp
+    if (num1 !== '' && operator !== '' && temp !== '') {
+        num2 = temp;
+        showcalculated(num1, operator, num2);
+    } else if (num1 !== '' && operator !== '') {
+        showcalculated(num1, operator, num2);
+    }
 }
+//
 
 function handleAC() {
     num1 = '';
@@ -133,11 +129,13 @@ function handleAC() {
     temp = ''
 
 }
-
-function showcalculated(num1,operator,num2) {
-    display.innerText = operate(num1,operator, num2);
-    result = operate(num1,operator, num2)
+//major change
+function showcalculated(n1, op, n2) {
+    result = operate(n1, op, n2);
+    display.innerText = result;  // Immediately update the display
+    
+    // Store result for continued operations
     num1 = result;
-    return;
-
+    temp = '';  
+    operator = '';  
 }
