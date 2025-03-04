@@ -17,7 +17,7 @@ function multiply(x, y) {
 function divide(x, y) {
     if (y == 0 && x == 0) {
         return "LMAO i caught that!you cheeky bugger!(pun intended i think)";
-    }   else {return (Number(x) * Number(y)).toFixed(2);} 
+    }   else {return (Number(x) / Number(y)).toFixed(2);} 
 };
 
 
