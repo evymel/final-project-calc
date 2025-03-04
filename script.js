@@ -57,12 +57,25 @@ let display = document.getElementById('display');
 const btns = document.querySelectorAll('button');
 
 btns.forEach(button => {button.addEventListener('click', ()=> {
-
-
     ButtonClick(button.innerText)
-    button.style.backgroundColor = unset;
-
 })
+});
+
+document.addEventListener("keydown", function(event) {
+    let key = event.key;
+
+    if (!isNaN(key) || key === '.') {
+        handleNum(key);
+    } 
+    else if (['+', '-', '*', '/'].includes(key)) {
+        handleOperator(key);
+    } 
+    else if (key === '=' || key === 'Enter') {
+        handleEqual();
+    } 
+    else if (key === 'Escape' || key.toLowerCase() === 'c') { 
+        handleAC();
+    }
 });
 
 
