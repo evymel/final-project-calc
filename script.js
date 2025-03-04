@@ -30,11 +30,6 @@ let currentdisplay = 'num1';
 let operator='';
 let result = ''
 
-
-
-
-
-
 //task 3
 //well this answers the deliberation on task two aye?
 function operate(num1, operator, num2){
@@ -68,6 +63,7 @@ function ButtonClick (value) {
     
     if (!isNaN(value) || value == '.'){
         handleNum(value);
+
     }
 
     else if( value == '+' || value == '-' || value == '*' || value == '/') {
@@ -90,7 +86,7 @@ function ButtonClick (value) {
 function handleNum(value) {
     temp += value
     display.innerText = temp;
-    
+
     return;
 }
 
@@ -108,32 +104,42 @@ function handleOperator(value) {
     
     display.innerText = operator;
 
-    currentdisplay = 'num2'
-    num1 = temp; 
+    currentdisplay = ''
+    if (result == '') {
+        num1 = temp; 
+    } else {
+        num1 = result;
+        num2 = temp
+    }
+
     temp = '';
-    
+    // if (num1 != '' && operator != '' && num2 != '') {
 
-
+    //     handleEqual()
+    // }
 }
 
 function handleEqual() {
     num2 = temp;
-    temp = '';
+    //temp = '';
 
     showcalculated(num1,operator,num2);
-
+    // here i do the trick????
+    //num1 = temp
 }
 
 function handleAC() {
-    num1 = 0;
-    num2 = 0;
+    num1 = '';
+    num2 = '';
     operator = ''
     display.innerText = 0;
+    result = ''
+    temp = ''
 
 }
 
 function showcalculated(num1,operator,num2) {
     display.innerText = operate(num1,operator, num2);
     result = operate(num1,operator, num2)
-    
+
 }
