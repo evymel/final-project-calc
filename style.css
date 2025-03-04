@@ -24,7 +24,7 @@ body {
     color: black;
     height: 72px;
     align-items: center;
-    background-color: #b2b9b7;
+    background-color: #b2b9b7 ;
     padding: 4px;
     margin: 4px;
 }
@@ -46,7 +46,7 @@ body {
     width: 86px;
     height: 72px;
     border-radius: 4px;
-    background-color: #217C7E;
+    background-color: greenyellow ;
     font-size: 2em;
     font-weight: 640;
 }

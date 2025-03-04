@@ -56,15 +56,23 @@ let display = document.getElementById('display');
 
 const btns = document.querySelectorAll('button');
 
-btns.forEach(button => {button.addEventListener('click', ()=> ButtonClick(button.innerText))
+btns.forEach(button => {button.addEventListener('click', ()=> {
+
+
+    ButtonClick(button.innerText)
+    button.style.backgroundColor = unset;
+
+})
 });
 
 
 
+
 function ButtonClick (value) {
+    
     if (!isNaN(value) || value == '.'){
         handleNum(value);
-
+        
     }
     else if( value == '+' || value == '-' || value == '*' || value == '/') {
 
@@ -95,6 +103,7 @@ function handleNum(value) {
 
 //major change
 function handleOperator(value) {
+    
     if (temp !== '') {
         if (num1 !== '' && operator !== '') {
             // Perform calculation immediately before setting new operator
