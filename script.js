@@ -42,7 +42,7 @@ function operate(num1, operator, num2){
         return multiply(num1, num2);
     } else if (operator == '/') {
         return divide(num1, num2);
-    }   
+    }     
     
 }
 
@@ -60,12 +60,10 @@ btns.forEach(button => {button.addEventListener('click', ()=> ButtonClick(button
 });
 
 function ButtonClick (value) {
-    
     if (!isNaN(value) || value == '.'){
         handleNum(value);
 
     }
-
     else if( value == '+' || value == '-' || value == '*' || value == '/') {
 
         handleOperator(value);
@@ -90,38 +88,31 @@ function handleNum(value) {
         temp += value
         display.innerText = temp;
     }
-
-
     return;
 }
 
 
 function handleOperator(value) {
-    //i've added that
-    // if (operator != '') {
+    //if below happens then we are at the second operator
+    // if (num1 == result) {
+    //     handleEqual()
     //     operator = value;
-        
     //     display.innerText = operator;
 
-        
-    // } 
-    operator = value;
-    
-    display.innerText = operator;
+    // }
 
+    operator = value;
+    display.innerText = operator;
     currentdisplay = ''
+
     if (result == '') {
         num1 = temp; 
     } else {
         num1 = result;
         num2 = temp
     }
-
     temp = '';
-    // if (num1 != '' && operator != '' && num2 != '') {
 
-    //     handleEqual()
-    // }
 }
 
 function handleEqual() {
@@ -146,5 +137,7 @@ function handleAC() {
 function showcalculated(num1,operator,num2) {
     display.innerText = operate(num1,operator, num2);
     result = operate(num1,operator, num2)
+    num1 = result;
+    return;
 
 }
